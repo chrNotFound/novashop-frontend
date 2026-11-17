@@ -1,0 +1,79 @@
+import { Routes, Route } from 'react-router-dom'
+import TiendaLayout from './components/TiendaLayout.jsx'
+import RutaAdmin from './components/RutaAdmin.jsx'
+import RutaPrivada from './components/RutaPrivada.jsx'
+import Home from './pages/tienda/Home.jsx'
+import Productos from './pages/tienda/Productos.jsx'
+import DetalleProducto from './pages/tienda/DetalleProducto.jsx'
+import Categorias from './pages/tienda/Categorias.jsx'
+import Ofertas from './pages/tienda/Ofertas.jsx'
+import Nosotros from './pages/tienda/Nosotros.jsx'
+import Blog from './pages/tienda/Blog.jsx'
+import DetalleBlog from './pages/tienda/DetalleBlog.jsx'
+import Contacto from './pages/tienda/Contacto.jsx'
+import Carrito from './pages/tienda/Carrito.jsx'
+import Checkout from './pages/tienda/Checkout.jsx'
+import ResultadoCompra from './pages/tienda/ResultadoCompra.jsx'
+import Login from './pages/tienda/Login.jsx'
+import Registro from './pages/tienda/Registro.jsx'
+import AdminLayout from './pages/admin/AdminLayout.jsx'
+import Dashboard from './pages/admin/Dashboard.jsx'
+import ProductosAdmin from './pages/admin/Productos.jsx'
+import FormularioProducto from './pages/admin/FormularioProducto.jsx'
+import Ordenes from './pages/admin/Ordenes.jsx'
+import Boleta from './pages/admin/Boleta.jsx'
+import Usuarios from './pages/admin/Usuarios.jsx'
+import FormularioUsuario from './pages/admin/FormularioUsuario.jsx'
+import HistorialUsuario from './pages/admin/HistorialUsuario.jsx'
+import CategoriasAdmin from './pages/admin/CategoriasAdmin.jsx'
+import Reportes from './pages/admin/Reportes.jsx'
+import Perfil from './pages/admin/Perfil.jsx'
+
+function App() {
+  return (
+    <Routes>
+      <Route element={<TiendaLayout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/productos" element={<Productos />} />
+        <Route path="/productos/:id" element={<DetalleProducto />} />
+        <Route path="/categorias" element={<Categorias />} />
+        <Route path="/ofertas" element={<Ofertas />} />
+        <Route path="/nosotros" element={<Nosotros />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:id" element={<DetalleBlog />} />
+        <Route path="/contacto" element={<Contacto />} />
+        <Route path="/carrito" element={<Carrito />} />
+        <Route path="/checkout" element={<RutaPrivada><Checkout /></RutaPrivada>} />
+        <Route path="/compra-exitosa/:id" element={<ResultadoCompra exitoso />} />
+        <Route path="/compra-error/:id" element={<ResultadoCompra exitoso={false} />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/registro" element={<Registro />} />
+      </Route>
+
+      <Route
+        path="/admin"
+        element={
+          <RutaAdmin>
+            <AdminLayout />
+          </RutaAdmin>
+        }
+      >
+        <Route index element={<Dashboard />} />
+        <Route path="productos" element={<ProductosAdmin />} />
+        <Route path="productos/nuevo" element={<FormularioProducto />} />
+        <Route path="productos/:id/editar" element={<FormularioProducto />} />
+        <Route path="ordenes" element={<Ordenes />} />
+        <Route path="ordenes/:id" element={<Boleta />} />
+        <Route path="usuarios" element={<Usuarios />} />
+        <Route path="usuarios/nuevo" element={<FormularioUsuario />} />
+        <Route path="usuarios/:id/editar" element={<FormularioUsuario />} />
+        <Route path="usuarios/:id/historial" element={<HistorialUsuario />} />
+        <Route path="categorias" element={<CategoriasAdmin />} />
+        <Route path="reportes" element={<Reportes />} />
+        <Route path="perfil" element={<Perfil />} />
+      </Route>
+    </Routes>
+  )
+}
+
+export default App
