@@ -45,11 +45,23 @@ Las pruebas usan **Jasmine** y **Karma** .
 npm test
 ```
 
-Ejecuta las 30 pruebas (componentes, formulario de login, contexto del carrito, utilidades
-y CRUD de productos).
+Ejecuta 134 pruebas sobre toda la aplicación. Las llamadas al backend se simulan con un
+`fetch` falso (`src/tests/ayudantes.jsx`), así que no hace falta tener la API encendida.
 
-Última ejecución: 30 de 30 aprobadas. Cobertura global: 52,8 % de instrucciones,
-34,92 % de ramas, 66,66 % de funciones y 51,56 % de líneas.
+| Archivo | Qué prueba |
+| --- | --- |
+| `ProductCard.spec.jsx` | Tarjeta de producto, descuento y sin stock |
+| `CarritoContext.spec.jsx`, `contextos.spec.jsx` | Carrito, sesión (`AuthContext`) y hook `useApi` |
+| `Login.spec.jsx` | Formulario de login contra la API |
+| `cliente.spec.js`, `clienteApi.spec.js` | Cliente de la API: token, errores, renovación del token |
+| `precios.spec.js`, `validaciones.spec.js`, `utilidades.spec.js` | Precios, validaciones, stock y estados |
+| `tienda.spec.jsx` | Páginas de la tienda: catálogo, carrito, checkout, registro, contacto, blog |
+| `admin.spec.jsx` | Panel de administración: acceso por rol, productos, categorías, usuarios, órdenes, reportes, perfil |
+
+Última ejecución: 134 de 134 aprobadas. Cobertura global: 99,27 % de instrucciones,
+95,62 % de ramas, 99,05 % de funciones y 99,36 % de líneas.
+
+El informe detallado queda en `coverage/html/index.html`.
 
 ## Estructura
 
